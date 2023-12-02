@@ -540,6 +540,18 @@
 	build_path = /obj/item/organ/internal/cyberimp/brain/wire_interface
 	category = list("Medical")
 
+/datum/design/cyberimp_ipc_selfrepair
+    name = "IPC Self-Repair Implant"
+    desc = "This implant allows an IPC to slowly repair itself over time in exchange for power."
+    id = "ci-ipc-selfrepair"
+	req_tech = list("materials" = 6, "biotech" = 6)
+    build_type = PROTOLATHE | MECHFAB
+    construction_time = 20
+    materials = list(MAT_METAL = 1000, MAT_GLASS = 1000)
+    build_path = /obj/item/organ/internal/cyberimp/ipc_selfrepair
+    category = list("Medical Designs")
+    departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
 /datum/design/raiden_implant
 	name = "Reactive Repair Implant"
 	desc = "This implant reworks the IPC frame, in order to incorporate materials that return to their original shape after being damaged. Requires power to function."

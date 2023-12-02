@@ -379,6 +379,34 @@
 	name = "hardened nutriment pump implant PLUS"
 	emp_proof = TRUE
 
+/obj/item/organ/internal/cyberimp/ipc_selfrepair
+    name = "IPC Self-Repair Implant"
+    desc = "This implant allows an IPC to slowly repair itself over time in exchange for power."
+    origin_tech = "materials=6;biotech=6"
+    slot = "self_repair"
+    requires_machine_person = TRUE
+
+/obj/item/organ/internal/cyberimp/ipc_selfrepair/on_life()
+    if(crit_fail)
+        return
+    if(owner.maxHealth == owner.health)
+        owner.adjust_nutrition(-0.5)
+        return //Passive damage scanning
+
+    owner.adjustBruteLoss(-0.5, robotic = TRUE)
+    owner.adjustFireLoss(-0.5, robotic = TRUE)
+    owner.adjust_nutrition(-4) //Very power inefficent. Hope you got an APC nearby.
+
+/obj/item/organ/internal/cyberimp/ipc_selfrepair/emp_act(severity)
+    if(emp_proof)
+        return
+    crit_fail = TRUE
+    addtimer(CALLBACK(src, PROC_REF(reboot)), 90 / severity)
+
+/obj/item/organ/internal/cyberimp/ipc_selfrepair/proc/reboot()
+    crit_fail = FALSE
+    to_chat(owner, "<span class='notice'>Your Self-Repair Implant finishes rebooting and resumes function.</span>")
+
 /obj/item/organ/internal/cyberimp/chest/reviver
 	name = "Reviver implant"
 	desc = "This implant will attempt to heal you out of critical condition. For the faint of heart!"
