@@ -540,6 +540,17 @@
 	build_path = /obj/item/organ/internal/cyberimp/brain/wire_interface
 	category = list("Medical")
 
+/datum/design/cyberimp_translator
+	name = "Translator Implant"
+	desc = "This implant will translate all languages to Galactic Common."
+	id = "ci-translator"
+	req_tech = list("materials" = 7, "biotech" = 7, "abductor" = 4)
+	build_type = PROTOLATHE | MECHFAB
+	materials = list(MAT_METAL = 1000, MAT_GLASS = 500, MAT_SILVER = 500)
+	construction_time = 100
+	build_path = /obj/item/organ/internal/cyberimp/brain/speech_translator
+	category = list("Medical")
+
 /datum/design/raiden_implant
 	name = "Reactive Repair Implant"
 	desc = "This implant reworks the IPC frame, in order to incorporate materials that return to their original shape after being damaged. Requires power to function."
