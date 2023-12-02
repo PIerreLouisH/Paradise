@@ -676,6 +676,36 @@ GLOBAL_LIST_EMPTY(multiverse)
 	duplicate_self = 1
 	sword_type = /obj/item/multisword/pike
 
+/////////////////////////////////////////PHILOSOPHER Stone///////////////////
+/obj/item/philosophers_stone
+	name = "philosopher's stone"
+	desc = "A magical stone that can remove racial weaknesses."
+	icon = 'icons/obj/wizard.dmi'
+	icon_state = "soulstone"
+	item_state = "soulstone"
+	w_class = WEIGHT_CLASS_TINY
+
+/obj/item/philosophers_stone/attack_self(mob/user)
+	if(istype(user, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		switch(H.dna.species.id)
+			if("grey")
+				H.dna.species.water_act = 0
+			if("diona")
+				H.dna.species.heatmod = 1
+				H.dna.species.reagent_tag -= PROCESS_SYN
+			if("kidan")
+				H.dna.species.tox_mod = 1
+			if("nian")
+				H.dna.species.flash_mod = 1
+			if("drask")
+				H.dna.species.heatmod = 1
+			if("ipc")
+				H.dna.species.emp_act = 0
+		to_chat(user, "<span class='notice'>You feel your weaknesses fading away...</span>")
+	else
+		to_chat(user, "<span class='warning'>The stone doesn't seem to have any effect.</span>")
+	qdel(src)
 
 /////////////////////////////////////////Necromantic Stone///////////////////
 

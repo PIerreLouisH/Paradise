@@ -405,6 +405,13 @@
 	return dat
 
 //Artefacts
+/datum/spellbook_entry/item/philosophers_stone
+	name = "Philosopher's Stone"
+	desc = "A magical stone that can remove racial weaknesses. Can be used once."
+	item_path = /obj/item/philosophers_stone
+	category = "Artefacts"
+	cost = 2
+
 /datum/spellbook_entry/item/necrostone
 	name = "A Necromantic Stone"
 	desc = "A Necromantic stone is able to resurrect three dead individuals as skeletal thralls for you to command."
@@ -471,6 +478,7 @@
 	item_path = /obj/item/reagent_containers/food/drinks/everfull
 	cost = 1
 	category = "Artefacts"
+
 
 //Weapons and Armors
 /datum/spellbook_entry/item/battlemage
