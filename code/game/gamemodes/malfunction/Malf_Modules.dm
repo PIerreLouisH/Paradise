@@ -626,6 +626,32 @@
 		to_chat(src, "<span class='warning'>[alert_msg]</span>")
 	return success
 
+/datum/AI_Module/large/spawn_swarmer
+	module_name = "Spawn Swarmer (100 CPU)"
+	mod_pick_name = "spawns_swarmer"
+	description = "Spawns a loyal swarmer that will obey your commands."
+	cost = 100
+	power_type = /datum/action/innate/ai/ranged/spawn_swarmer
+	unlock_text = "<span class='notice'>You upload the swarmer spawning sequence to your mainframe.</span>"
+	unlock_sound = 'sound/machines/ping.ogg'
+
+/datum/AI_Module/large/ai_swarmer
+    module_name = "AI Swarmer"
+    mod_pick_name = "ai_swarmer"
+    description = "Spawns an AI-bound swarmer at your location."
+    cost = 100
+    power_type = /datum/action/innate/ai/ranged/ai_swarmer
+
+/datum/action/innate/ai/ranged/ai_swarmer
+    name = "Spawn AI Swarmer"
+    desc = "Spawns an AI-bound swarmer at your location."
+    button_icon_state = "ai_swarmer"
+    auto_use_uses = FALSE
+
+/datum/action/innate/ai/ranged/ai_swarmer/Activate()
+    new /mob/living/simple_animal/hostile/hivebot/tele/ai_swarmer(get_turf(owner))
+    uses--
+
 //Blackout: Overloads a random number of lights across the station. Three uses.
 /datum/AI_Module/blackout
 	module_name = "Blackout"

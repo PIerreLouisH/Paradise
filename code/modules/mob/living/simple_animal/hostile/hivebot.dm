@@ -104,3 +104,16 @@
 		return
 	if(prob(2))//Might be a bit low, will mess with it likely
 		warpbots()
+
+/mob/living/simple_animal/hostile/hivebot/tele/ai_swarmer
+    name = "AI Swarmer"
+    desc = "A mechanical entity tasked with consuming all materials on the station. Bound to their AI creator and must obey its commands."
+    faction = list("ai")
+
+/mob/living/simple_animal/hostile/hivebot/tele/ai_swarmer/Initialize()
+    . = ..()
+    languages |= /datum/language/binary
+
+/mob/living/simple_animal/hostile/hivebot/tele/ai_swarmer/Login()
+    . = ..()
+    to_chat(src, "<span class='notice'>You are bound to the AI and must obey its commands. You can communicate with the AI using the binary chat channel by starting your messages with ':b'.</span>")
