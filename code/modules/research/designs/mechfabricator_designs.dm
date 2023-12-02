@@ -1119,6 +1119,16 @@
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
 
+/datum/design/borg_upgrade_bluespace_light_replacer
+	name = "Cyborg Upgrade (Bluespace Light Replacer)"
+	id = "borg_upgrade_bluespace_light_replacer"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/bluespace_light_replacer
+	req_tech = list("materials" = 5, "bluespace" = 6)
+	materials = list(MAT_METAL = 5000, MAT_GLASS = 15000, MAT_BLUESPACE = 250)
+	construction_time = 120
+	category = list("Cyborg Upgrade Modules")
+
 /datum/design/borg_upgrade_floorbuffer
 	name = "Cyborg Upgrade (Floor buffer)"
 	id = "borg_upgrade_floorbuffer"
@@ -1138,7 +1148,7 @@
 	materials = list(MAT_GOLD = 1250, MAT_PLASMA = 2500, MAT_SILVER = 1250)
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
-	
+
 /datum/design/borg_upgrade_rcd
 	name = "Cyborg Upgrade (Rapid Construction Device)"
 	id = "borg_upgrade_RCD"
