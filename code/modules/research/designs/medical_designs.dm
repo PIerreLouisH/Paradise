@@ -452,6 +452,17 @@
 	build_path = /obj/item/organ/internal/eyes/cybernetic/thermals
 	category = list("Medical")
 
+/datum/design/cyberimp_night_vision
+	name = "Night Vision Implant"
+	desc = "These cybernetic eyes will allow you to see in complete darkness."
+	id = "ci-night_vision"
+	req_tech = list("materials" = 6, "biotech" = 6, "engineering" = 6)
+	build_type = PROTOLATHE | MECHFAB
+	construction_time = 50
+	materials = list(MAT_METAL = 500, MAT_GLASS = 500, MAT_SILVER = 500, MAT_GOLD = 300)
+	build_path = /obj/item/organ/internal/eyes/cybernetic/night_vision
+	category = list("Medical")
+
 /datum/design/cyberimp_antidrop
 	name = "Anti-Drop Implant"
 	desc = "This cybernetic brain implant will allow you to force your hand muscles to contract, preventing item dropping. Twitch ear to toggle."

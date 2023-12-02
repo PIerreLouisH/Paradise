@@ -167,6 +167,13 @@
 	emp_proof = TRUE
 	origin_tech = "materials=6;programming=5;biotech=6;magnets=6;syndicate=3"
 
+/obj/item/organ/internal/eyes/cybernetic/night_vision
+	name = "night vision eyes"
+	desc = "These cybernetic eyes will allow you to see in complete darkness."
+	eye_color = "#000000" // You can change this to any color you want
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	origin_tech = "materials=6;programming=4;biotech=4;magnets=4"
+
 /obj/item/organ/internal/eyes/cybernetic/flashlight
 	name = "flashlight eyes"
 	desc = "It's two flashlights rigged together with some wire. Why would you put these in someone's head?"
