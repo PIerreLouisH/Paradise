@@ -688,7 +688,7 @@ GLOBAL_LIST_EMPTY(multiverse)
 /obj/item/philosophers_stone/attack_self(mob/user)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
-		switch(H.dna.species.id)
+		switch(H.dna.species.name)
 			if("grey")
 				H.dna.species.water_act = 0
 			if("diona")

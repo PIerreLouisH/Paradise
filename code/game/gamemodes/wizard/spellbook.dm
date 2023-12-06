@@ -407,7 +407,7 @@
 //Artefacts
 /datum/spellbook_entry/item/philosophers_stone
 	name = "Philosopher's Stone"
-	desc = "A magical stone that can remove racial weaknesses. Can be used once."
+	desc = "Alchimists biggest secrets. A magical stone that can remove some racial weaknesses. Can be used once."
 	item_path = /obj/item/philosophers_stone
 	category = "Artefacts"
 	cost = 2
