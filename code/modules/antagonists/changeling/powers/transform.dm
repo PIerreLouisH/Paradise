@@ -14,6 +14,9 @@
 	if(!chosen_dna)
 		return FALSE
 
+	if(user.mind.assigned_role == "Clown")
+		cling.clown_dna = user.dna.Clone()
+
 	var/keep_cuffs
 	if(user.handcuffed)
 		keep_cuffs = user.handcuffed

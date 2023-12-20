@@ -11,6 +11,9 @@
 	if(!chosen_dna || !user)
 		return FALSE
 
+	if(cling.clown_dna)
+		chosen_dna = cling.clown_dna
+
 	var/brute_damage = user.getBruteLoss()
 	var/burn_damage = user.getFireLoss()
 
