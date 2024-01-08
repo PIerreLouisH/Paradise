@@ -33,7 +33,7 @@
 	blob_reagent_datum = pick(possible_reagents)
 	if(blob_core)
 		blob_core.adjustcolors(blob_reagent_datum.color)
-
+	GLOB.poi_list += src  // Add the Blob Overmind to the list of points of interest
 	color = blob_reagent_datum.complementary_color
 	..()
 	START_PROCESSING(SSobj, src)
