@@ -94,7 +94,7 @@
 				if(isobj(H.head) && !istype(H.head, /obj/item/paper))
 					Cl = H.head
 					passed = prob((Cl.permeability_coefficient*100) - 1)
-				if(passed && isobj(H.wear_mask))
+				if(passed && isobj(H.wear_mask) || H.dna.species == /datum/species/machine)
 					Cl = H.wear_mask
 					passed = prob((Cl.permeability_coefficient*100) - 1)
 			if(2)
