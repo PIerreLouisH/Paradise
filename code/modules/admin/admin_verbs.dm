@@ -1055,3 +1055,23 @@ GLOBAL_LIST_INIT(view_runtimes_verbs, list(
 			show_blurb(about_to_be_banned, 15, message, null, "center", "center", message_color, null, null, 1)
 			log_admin("[key_name(src)] sent an admin alert to [key_name(about_to_be_banned)] with custom message [message].")
 			message_admins("[key_name(src)] sent an admin alert to [key_name(about_to_be_banned)] with custom message [message].")
+
+/client/verb/admin_playback_round()
+	set category = "Admin"
+	set name = "Playback Recorded Round"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/list/recorded_files = file_directory_listing("data/recorded_rounds/")
+	var/selected_file = input("Select a recorded round file:", "Playback Round", null) as null|anything in recorded_files
+	if(!selected_file)
+		return
+
+	var/list/game_states = read_data_from_file("data/recorded_rounds/[selected_file]")
+	if(!game_states)
+		to_chat(src, "Failed to load game states.")
+		return
+
+	var/datum/controller/subsystem/playback/SSplayback = SSplayback
+	SSplayback.start_playback(game_states, src)
