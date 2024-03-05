@@ -246,3 +246,11 @@
 
 /obj/item/mod/control/proc/on_mod_retracted(mob/user)
 	SEND_SIGNAL(src, COMSIG_MOD_RETRACTED, user)
+
+/// Retracts all parts of the suit from the user quickly.
+/obj/item/mod/control/proc/quick_retract(mob/user)
+	for(var/obj/item/part as anything in mod_parts)
+		if(part.loc != src)
+			retract(user, part, TRUE)
+	playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+	on_mod_retracted(user)

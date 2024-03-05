@@ -48,6 +48,11 @@
 	if(!istype(C)) // Shouldn't be able to cuff anything but carbons.
 		return
 
+	// Check if target is wearing a MODsuit and retract parts before handcuffing
+	if(istype(C.back, /obj/item/mod/control))
+		var/obj/item/mod/control/modsuit = C.back
+		modsuit.quick_retract(C)
+
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		if(!(H.has_left_hand() || H.has_right_hand()))
