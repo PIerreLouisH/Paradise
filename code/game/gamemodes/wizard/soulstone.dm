@@ -357,6 +357,7 @@
 				else
 					T.forceMove(src) // Put the shade into the stone.
 					T.health = T.maxHealth
+					T.updatehealth() // Update the health variable to reflect the new health state.
 					icon_state = icon_state_full
 					name = "soulstone : [T.name]"
 					to_chat(T, "<span class='notice'>Your soul has been recaptured by the soul stone, its arcane energies are reknitting your ethereal form</span>")
