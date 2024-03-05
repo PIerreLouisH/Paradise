@@ -61,7 +61,9 @@
 	if(held_body) // Null check for empty bodies
 		held_body.forceMove(get_turf(src))
 		SSticker.mode.add_cult_immunity(held_body)
-		if(ismob(held_body)) // Check if the held_body is a mob
+		if(iscultist(held_body)) // Check if the held body is a cultist
+			held_body.forceMove(get_turf(src)) // Release the body at the shade's location
+		else if(ismob(held_body)) // Check if the held_body is a mob
 			held_body.key = key
 		else if(istype(held_body, /obj/item/organ/internal/brain)) // Check if the held_body is a brain
 			var/obj/item/organ/internal/brain/brain = held_body
