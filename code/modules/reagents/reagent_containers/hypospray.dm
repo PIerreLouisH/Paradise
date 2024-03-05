@@ -134,6 +134,11 @@
 	if(!reagents.total_volume)
 		to_chat(user, "<span class='warning'>[src] is empty!</span>")
 		return
+
+	var/obj/item/organ/external/affecting = M.get_organ(user.zone_selected)
+	else if(affecting && affecting.is_robotic())
+		to_chat(user, "<span class='alert'>Cannot inject into a robotic limb.</span>")
+		return
 	..()
 	update_icon(UPDATE_ICON_STATE)
 	return TRUE
