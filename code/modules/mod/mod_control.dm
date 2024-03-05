@@ -94,6 +94,8 @@
 	var/datum/action/item_action/chameleon/change/modsuit/chameleon_action
 	/// Is the control unit disquised?
 	var/current_disguise = FALSE
+	//Is the modsuit emagged?
+	var/emagged = FALSE
 
 /obj/item/mod/control/serialize()
 	var/list/data = ..()
@@ -326,7 +328,7 @@
 		to_chat(user, "<span class='warning'>Open the cover first!</span>")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
-	if(!allowed(user))
+	if(!allowed(user) && !emagged)
 		to_chat(user, "<span class='warning'>Insufficient access!</span>")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
@@ -448,6 +450,7 @@
 /obj/item/mod/control/emag_act(mob/user)
 	locked = !locked
 	to_chat(user, "<span class='warning'>Suit access [locked ? "locked" : "unlocked"]")
+	emagged = TRUE
 	return TRUE
 
 /obj/item/mod/control/emp_act(severity)
