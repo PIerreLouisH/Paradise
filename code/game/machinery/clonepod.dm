@@ -288,6 +288,10 @@ GLOBAL_LIST_INIT(cloner_biomass_items, list(\
 		message += "<b>Consciousness slowly creeps over you as your body regenerates.</b><br>"
 		message += "<i>So this is what cloning feels like?</i>"
 		to_chat(H, "<span class='notice'>[message]</span>")
+
+		if(clonemind.has_antag_datum(/datum/antagonist/mindslave))
+			clonemind.remove_antag_datum(/datum/antagonist/mindslave)
+
 	else if(grab_ghost_when == CLONER_MATURE_CLONE)
 		to_chat(clonemind.current, "<span class='notice'>Your body is beginning to regenerate in a cloning pod. You will become conscious when it is complete.</span>")
 		// Set up a soul link with the dead body to catch a revival
