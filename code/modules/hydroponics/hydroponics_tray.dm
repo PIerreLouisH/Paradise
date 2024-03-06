@@ -853,6 +853,12 @@
 		update_state()
 	else if(is_pen(O) && myseed)
 		myseed.variant_prompt(user, src)
+	else if (istype(0, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = O
+		if(H.species.name == "Diona" && H.stat == DEAD)
+			user.visible_message("<span class='notice'>[user] places [H] into [src].</span>", "<span class='notice'>You place [H] into [src].</span>")
+			H.loc = src
+			begin_regrowth(H)
 	else
 		return ..()
 
@@ -1021,3 +1027,21 @@
 
 	if(reagent_source) // If the source wasn't composted and destroyed
 		reagent_source.update_icon()
+
+/obj/machinery/hydroponics/proc/begin_diona_regrowth(mob/living/carbon/human/species/diona/dead_diona, mob/user)
+	if(!myseed && !dead && nutrilevel >= 10)
+		visible_message("<span class='notice'>[user] places [dead_diona] in [src]. The tray begins to hum with energy.</span>")
+		dead = TRUE // Prevents usage of the tray while regrowing a Diona
+		myseed = new /obj/item/seeds/nymph(get_turf(src)) // Placeholder seed to represent the Diona regrowth process
+		addtimer(CALLBACK(src, .proc/finish_diona_regrowth, dead_diona), 300) // Adjust the time as needed for balance
+		nutrilevel -= 10
+	else if(nutrilevel < 10)
+		to_chat(user, "<span class='warning'>There are not enough nutrients in [src] to begin the regrowth process.</span>")
+
+/obj/machinery/hydroponics/proc/finish_diona_regrowth(mob/living/carbon/human/species/diona/regrown_diona)
+	regrown_diona.revive() // Heal the Diona's body
+	regrown_diona.client.transfer_to(regrown_diona) // Transfer the player's soul back into the Diona
+	visible_message("<span class='notice'>[regrown_diona] rises from [src], fully regrown.</span>")
+	dead = FALSE
+	QDEL_NULL(myseed)
+	update_state()
