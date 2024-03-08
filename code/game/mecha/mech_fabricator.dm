@@ -280,6 +280,15 @@
   */
 /obj/machinery/mecha_part_fabricator/proc/on_material_insert_timer_finish()
 	cut_overlays()
+	var/turf/spawn_location = get_turf(src)
+	if(istype(spawn_location, /turf/simulated/wall)) // Check if the tile below is a wall
+		// Try to spawn to the north, east, or west instead
+		var/list/possible_directions = list(NORTH, EAST, WEST)
+		for(var/direction in possible_directions)
+			var/turf/new_location = get_step(src, direction)
+			if(!istype(new_location, /turf/simulated/wall))
+				spawn_location = new_location
+				break
 
 /**
   * Returns whether the machine can accept new materials.
