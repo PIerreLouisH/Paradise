@@ -120,6 +120,8 @@ GLOBAL_LIST_EMPTY(fluidtrack_cache)
 	var/obj/effect/decal/cleanable/blood/footprints/FP = new /obj/effect/decal/cleanable/blood/footprints(T)
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
+		if(H.buckled && istype(H.buckled, /obj/vehicle/ridden/janicart))
+			return
 		FP.blood_state = H.blood_state
 		FP.bloodiness = H.bloody_feet[H.blood_state] - BLOOD_LOSS_IN_SPREAD
 		FP.basecolor = H.feet_blood_color
@@ -128,6 +130,8 @@ GLOBAL_LIST_EMPTY(fluidtrack_cache)
 			FP.blood_DNA = H.blood_DNA.Copy()
 	else if(istype(A, /obj/item/clothing/shoes))
 		var/obj/item/clothing/shoes/S = A
+		if(S.wearer && S.wearer.buckled && istype(S.wearer.buckled, /obj/vehicle/ridden/janicart))
+			return
 		FP.blood_state = S.blood_state
 		FP.bloodiness = S.bloody_shoes[S.blood_state] - BLOOD_LOSS_IN_SPREAD
 		FP.basecolor = S.blood_color
