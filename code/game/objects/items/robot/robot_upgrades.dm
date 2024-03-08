@@ -39,6 +39,11 @@
  * * R - the cyborg that was clicked on with an upgrade.
  */
 /obj/item/borg/upgrade/proc/pre_install_checks(mob/living/silicon/robot/R)
+	// Check if an upgrade of the same type is already installed
+	for(var/obj/item/borg/upgrade/U in R.upgrades)
+		if(istype(U, src.type))
+			to_chat(user, "<span class='warning'>An upgrade of this type is already installed.</span>")
+			return FALSE
 	if(R.stat == DEAD)
 		to_chat(usr, "<span class='warning'>[src] will not function on a deceased cyborg.</span>")
 		return
