@@ -260,3 +260,8 @@
 	icon_state = "ectoplasm"
 	list_reagents = list("ectoplasm" = 10)
 	tastes = list("spookiness" = 1)
+
+/obj/item/food/snacks/ingredient/special_brew
+	name = "Special Brew"
+	required_reagents = list(/datum/reagent/consumable/ethanol/beer/special = 5)
+	result = /obj/item/reagent_containers/food/drinks/beer/special
