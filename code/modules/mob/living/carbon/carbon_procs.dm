@@ -1048,6 +1048,11 @@ GLOBAL_LIST_INIT(ventcrawl_machinery, list(/obj/machinery/atmospherics/unary/ven
 /mob/living/carbon/proc/update_handcuffed()
 	SEND_SIGNAL(src, COMSIG_CARBON_UPDATE_HANDCUFFED, handcuffed)
 	if(handcuffed)
+		if(istype(back, /obj/item/mod/control))
+			var/obj/item/mod/control/modsuit_control = back
+			if(istype(wear_suit, /obj/item/clothing/suit/mod))
+				modsuit_control.active = FALSE
+				modsuit_control.quick_deploy(src)
 		drop_r_hand()
 		drop_l_hand()
 		stop_pulling()
